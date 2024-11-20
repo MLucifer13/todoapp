@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import index, update,delete
+from . import views
 
 app_name = 'todoapp'
 
 urlpatterns = [
-    path('', index, name="todos-index"),
-    path('update/<int:pk>/', update, name='todos-update'),
-    path('delete/<int:pk>/', delete, name='todos-delete'),
+    path('', views.index, name="todos-list"),
+    path('update/<int:pk>/', views.update, name='todos-update'),
+    path('delete/<int:pk>/', views.delete, name='todos-delete'),
+    path('toggle/<int:pk>/', views.toggle_todo, name='todos-toggle'),
 ]

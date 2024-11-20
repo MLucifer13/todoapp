@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task
 from .forms import TaskForm, UpdateTaskForm
 
@@ -12,7 +12,7 @@ def index(request):
 
     if request.method == "POST":
         form = TaskForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():  # Added parentheses here
             form.save()
             return redirect('/')
     
@@ -50,3 +50,10 @@ def delete(request, pk):
         task.delete()
         return redirect('/')
     return render(request, 'todoapp/delete_task.html')
+
+
+def toggle_todo(request, pk):
+    todo = get_object_or_404(Task, pk=pk)
+    todo.complete = not todo.complete
+    todo.save()
+    return redirect('todoapp:todos-list')  # Correct redirect

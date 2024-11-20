@@ -19,12 +19,17 @@
             {% for todo in todos %}
             <div class="todo-item {% if todo.complete %}completed{% endif %}">
                 <div class="todo-content">
-                    <span class="todo-date">{{ todo.date_created|date:"M d, Y" }}</span>
-                    <div class="todo-text">
-                        {% if todo.complete %}
-                        <span class="todo-check"><i class="fas fa-check-circle"></i></span>
-                        {% endif %}
-                        {{ todo.content }}
+                    <form method="POST" action="{% url 'todoapp:todos-toggle' todo.id %}" class="todo-toggle-form">
+                        {% csrf_token %}
+                        <button type="submit" class="todo-complete-btn {% if todo.complete %}active{% endif %}">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </form>
+                    <div class="todo-text-container">
+                        <span class="todo-date">{{ todo.date_created|date:"M d, Y" }}</span>
+                        <div class="todo-text">
+                            {{ todo.content }}
+                        </div>
                     </div>
                 </div>
                 <div class="todo-actions">
@@ -63,8 +68,8 @@
     }
 
     .apple-todo-container {
-        max-width: 600px;
-        margin: 2rem auto;
+        max-width: 700px;
+        margin: 0 rem auto;
         padding: 0 1rem;
     }
 
@@ -243,6 +248,48 @@
 
     .delete-actions .apple-button {
         min-width: 100px;
+    }
+
+    .todo-toggle-form {
+        margin-right: 1rem;
+    }
+
+    .todo-complete-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 2px solid #0070c9;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .todo-complete-btn i {
+        color: white;
+        font-size: 12px;
+        display: none;
+    }
+
+    .todo-complete-btn.active {
+        background-color: #0070c9;
+    }
+
+    .todo-complete-btn.active i {
+        display: block;
+    }
+
+    .todo-text-container {
+        flex-grow: 1;
+    }
+
+    .todo-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
     }
 </style>
 

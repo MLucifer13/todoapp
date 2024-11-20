@@ -14,4 +14,4 @@ class TaskForm(forms.ModelForm):
 class UpdateTaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = '__all__'
+        fields = ['content']
