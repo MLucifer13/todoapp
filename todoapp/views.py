@@ -21,7 +21,6 @@ def index(request):
     context= {
         'todos': todos,
         'form': form,
-        'count_todos': count_todos,
         'count_completed_todo': count_completed_todo,
         'uncompleted': uncompleted,
     }
