@@ -4,8 +4,10 @@ body {
 }
 
 .apple-todo-container {
-    max-width: 700px;
-    margin: 0 rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* Center vertically */
     padding: 0 1rem;
 }
 
@@ -16,6 +18,9 @@ body {
         0 15px 35px rgba(0,0,0,0.05), 
         0 5px 15px rgba(0,0,0,0.05);
     overflow: hidden;
+    width: 100%;
+    max-width: 800px;  /* Make the box larger */
+    padding: 2rem;
 }
 
 .apple-form-section {
@@ -130,6 +135,7 @@ body {
     text-decoration: line-through;
     color: #8e8e93;
 }
+
 .todo-actions {
     display: flex;
     gap: 0.5rem;
@@ -246,4 +252,3 @@ body {
     align-items: center;
     width: 100%;
 }
-
