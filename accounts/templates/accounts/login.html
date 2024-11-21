@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="apple-auth-container">
-    <div class="apple-card">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="apple-button primary">Login</button>
-        </form>
-        <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign Up</a></p>
+<div class="main-container">
+    <div class="apple-auth-container">
+        <div class="apple-card">
+            <h2 class="auth-title">Login to Your Account</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_username">Username*</label>
+                    <input type="text" name="username" class="textinput" required id="id_username">
+                </div>
+                <div class="mb-3">
+                    <label for="id_password">Password*</label>
+                    <input type="password" name="password" class="passwordinput" required id="id_password">
+                </div>
+                <button type="submit" class="apple-button">Sign In</button>
+            </form>
+            <p class="auth-link">Don't have an account? <a href="{% url 'accounts:signup' %}">Create Account</a></p>
+        </div>
     </div>
 </div>
 {% endblock %}
-

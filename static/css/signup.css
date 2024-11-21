@@ -1,0 +1,201 @@
+/* Apple-Inspired Signup Styles */
+:root {
+    --apple-background: #f5f5f7;
+    --apple-card-background: #ffffff;
+    --apple-text-primary: #1d1d1f;
+    --apple-text-secondary: #86868b;
+    --apple-primary-blue: #0071e3;
+    --apple-border-color: #d2d2d7;
+    --apple-error-red: #ff3b30;
+    --apple-border-radius: 12px;
+    --apple-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --apple-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    padding: 0;
+}
+
+.apple-auth-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 0 20px;
+}
+
+.apple-card {
+    background-color: var(--apple-card-background);
+    border-radius: var(--apple-border-radius);
+    box-shadow: var(--apple-box-shadow);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.4s ease;
+}
+
+.apple-card:hover {
+    box-shadow: var(--apple-hover-shadow);
+    transform: translateY(-5px);
+}
+
+.apple-card h2 {
+    color: var(--apple-text-primary);
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+/* Specific Field Styling */
+.signup-form .form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.signup-form label {
+    display: block;
+    color: var(--apple-text-secondary);
+    margin-bottom: 8px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.2px;
+}
+
+.signup-form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--apple-border-color);
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.signup-form .form-control:focus {
+    border-color: var(--apple-primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+    outline: none;
+}
+
+/* Error State Styling */
+.signup-form .form-control.is-invalid {
+    border-color: var(--apple-error-red);
+}
+
+.signup-form .invalid-feedback {
+    color: var(--apple-error-red);
+    font-size: 13px;
+    text-align: left;
+    margin-top: 6px;
+    animation: fadeError 0.3s ease;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    height: 4px;
+    width: 100%;
+    background-color: var(--apple-border-color);
+    margin-top: 5px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.password-strength-meter {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.password-strength-weak {
+    background-color: var(--apple-error-red);
+}
+
+.password-strength-medium {
+    background-color: #ff9500;
+}
+
+.password-strength-strong {
+    background-color: #34c759;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--apple-primary-blue);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: -0.2px;
+}
+
+.signup-button:hover {
+    background-color: #0060f6;
+    transform: scale(1.02);
+}
+
+.signup-button:active {
+    transform: scale(0.98);
+    background-color: #005bd3;
+}
+
+.signup-link {
+    margin-top: 25px;
+    color: var(--apple-text-secondary);
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: var(--apple-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeError {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.apple-card {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+    animation-delay: 0.1s;
+}
+
+@media (max-width: 768px) {
+    .apple-card {
+        padding: 30px;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .apple-card h2 {
+        font-size: 24px;
+    }
+
+    .signup-form .form-control {
+        padding: 10px 14px;
+    }
+}
