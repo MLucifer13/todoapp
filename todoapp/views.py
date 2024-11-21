@@ -34,31 +34,43 @@ def index(request):
 
     return render(request, 'todoapp/index.html', context)
 
+@login_required
 def update(request, pk):
-    todo = Task.objects.get(Task, pk=pk, user= request.user)
+    # Corrected line: Get the todo task for the logged-in user
+    todo = get_object_or_404(Task, id=pk, user=request.user)
+
     if request.method == "POST":
         form = UpdateTaskForm(request.POST, instance=todo)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/')  # Redirect to the homepage after updating
     else:
         form = UpdateTaskForm(instance=todo)
-    context= {
+
+    context = {
         'form': form
     }
+
     return render(request, 'todoapp/update_task.html', context)
 
-
+@login_required
 def delete(request, pk):
-    task = Task.objects.get(Task, pk=pk, user= request.user)
+    # Corrected line: Get the todo task for the logged-in user
+    task = get_object_or_404(Task, id=pk, user=request.user)
+    
     if request.method == 'POST':
         task.delete()
-        return redirect('/')
+        return redirect('/')  # Redirect to the homepage after deletion
+
     return render(request, 'todoapp/delete_task.html')
 
-
+@login_required
 def toggle_todo(request, pk):
-    todo = get_object_or_404(Task, pk=pk, user= request.user)
+    # Corrected line: Get the todo task for the logged-in user
+    todo = get_object_or_404(Task, id=pk, user=request.user)
+    
+    # Toggle the completion status of the task
     todo.complete = not todo.complete
     todo.save()
-    return redirect('todoapp:todos-list')  # Correct redirect
+
+    return redirect('todoapp:todos-list')  # Redirect to the todos list page
