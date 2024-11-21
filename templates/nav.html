@@ -10,7 +10,19 @@
                 <li class="nav-item">
                     <a class="nav-link apple-link" href="{% url 'todoapp:todos-list' %}">Home</a>
                 </li>
-            </ul>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link apple-link" href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link apple-link" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link apple-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+                    </li>
+                {% endif %}
+                </ul>
         </div>
     </div>
 </nav>
@@ -52,5 +64,24 @@
 
     .navbar-toggler-icon {
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%231d1d1f' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .apple-auth-container {
+        max-width: 400px;
+        margin: 2rem auto;
+    }
+    
+    .apple-auth-container h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #1d1d1f;
+    }
+    
+    .apple-auth-container a {
+        color: #0070c9;
+        text-decoration: none;
+    }
+    
+    .apple-auth-container a:hover {
+        text-decoration: underline;
     }
 </style>

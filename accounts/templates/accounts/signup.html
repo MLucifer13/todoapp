@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="apple-auth-container">
+    <div class="apple-card">
+        <h2>Sign Up</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="apple-button primary">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+    </div>
+</div>
+{% endblock %}
+
