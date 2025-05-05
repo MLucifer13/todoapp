@@ -4,6 +4,9 @@ A Django-based todo list application that allows users to manage their personal 
 
 ---
 
+#### Video Demo:  <https://youtu.be/V76nYuwroo0>
+
+
 ## Table of Contents
 
 - [Features](#features)
